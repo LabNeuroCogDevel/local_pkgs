@@ -1,7 +1,8 @@
 export PYTHONPATH=/opt/ni_tools/python/userbase
 export PYTHONUSERBASE=/opt/ni_tools/python/userbase
 export FSLDIR="/opt/ni_tools/fsl_6"
-export PATH="/opt/ni_tools/ANTs:$FSLDIR/bin:/opt/ni_tools/fmri_processing_scripts:/opt/ni_tools/preproc_pipelines:$PYTHONPATH/bin:$PATH:"
+NI=/opt/ni_tools
+export PATH="$NI/ANTs:$FSLDIR/bin:$NI/fmri_processing_scripts:$NI/preproc_pipelines:$NI/hub:$PYTHONPATH/bin:$PATH"
 source $FSLDIR/etc/fslconf/fsl.sh
 
 # afni help if we have it
