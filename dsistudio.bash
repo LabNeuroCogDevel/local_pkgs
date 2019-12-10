@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 trap 'e=$?; [ $e -ne 0 ] && echo "$0 exited in error"' EXIT
+
+source paths.bash # NI=/opt/ni_tools
 set -x
+
 #
-# install dsistudio
+# install dsistudio to either /opt/ni_tools/dsistudio or /ot/ni_tools/dsistudio-YYYYMMDD
+#
 #  20191210WF  into local_pkgs
 #  20180919WF init (readme)
 #
@@ -23,11 +27,11 @@ YUMDEPS=(qt qt-devel boost boost-dev zlib zlib-dev)
 
 
 # either update or new directory
-[ $# -eq 0 ] || [[ ! $1 =~ today|update ]] && { echo -e "USAGE: $0 today|update"; exit 1; }
+[ $# -eq 0 ] || [[ ! $1 =~ today|noext ]] && { echo -e "USAGE: $0 today|noext; where 'today' creates dsistudio-YYYYMMDD"; exit 1; }
 [ "$1" == "today" ] && ext=-$(date +%Y%m%d) || ext=""
 
 # 
-! test -d /opt/ni_tools/dsistudio$ext && mkdir $_
+! test -d $NI/dsistudio$ext && mkdir $_
 cd $_
 [ ! -d src ] && git clone -b master git://github.com/frankyeh/DSI-Studio.git src 
 cd src

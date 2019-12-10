@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -xeou pipefail
+source paths.bash # NI=/opt/ni_tools
 # build ants a la
 # https://github.com/kaczmarj/ANTs-builds/blob/master/Dockerfile
 # https://github.com/ANTsX/ANTs/wiki/Compiling-ANTs-on-Linux-and-Mac-OS
-ANTSDIR=/opt/ni_tools/ANTs 
+ANTSDIR=$NI/ANTs 
 
 # need newer cmake
 # wget https://github.com/Kitware/CMake/releases/download/v3.13.4/cmake-3.13.4-Linux-x86_64.sh

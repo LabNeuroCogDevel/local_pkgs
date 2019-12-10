@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-etc/fslinstaller.py -d /opt/ni_tools/fsl_6
+source paths.bash # NI=/opt/ni_tools
+etc/fslinstaller.py -d $NI/fsl_6
